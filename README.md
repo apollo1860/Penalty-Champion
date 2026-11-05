@@ -9,7 +9,14 @@ Elfmeter-Turnier als Web-App: Wähle einen der 64 Teilnehmer des DFB-Pokals 2026
 - **Halten:** Vor dem Anlauf links, Mitte oder rechts wählen (Buttons, Tippen ins Tor oder Pfeiltasten). Wer zu lange wartet, bleibt stehen.
 - Tastatur: Pfeiltasten zum Zielen, Leertaste/Enter zum Bestätigen und Schießen, Pfeiltasten oder 1/2/3 zum Halten.
 
-Regeln wie im echten Elfmeterschießen: fünf Schützen pro Team, vorzeitige Entscheidung, danach Sudden Death. Die 1. Runde nutzt die echten ausgelosten Paarungen, ab der 2. Runde wird zufällig gelost. Alle anderen Partien werden anhand der Teamstärke simuliert. Der Regler wird von Runde zu Runde etwas schneller.
+Regeln wie im echten Elfmeterschießen: fünf Schützen pro Team, vorzeitige Entscheidung, danach Sudden Death.
+
+Auslosung wie im echten Pokal mit zwei Töpfen:
+
+- **Amateurtopf:** Amateure, Drittligisten und die Teams ab Platz 15 der letzten Zweitliga-Saison (Düsseldorf, Fürth, Braunschweig, Münster).
+- **Profitopf:** alle übrigen Bundesliga- und Zweitligisten.
+- Die 1. Runde nutzt die echten Paarungen (immer Amateurtopf gegen Profitopf).
+- Ab der 2. Runde bekommen Teams aus dem Amateurtopf so lange wie möglich einen Gegner aus dem Profitopf und haben dann Heimrecht. Erst wenn ein Topf leer ist, werden die übrigen Teams untereinander gelost. Alle anderen Partien werden anhand der Teamstärke simuliert. Der Regler wird von Runde zu Runde etwas schneller.
 
 ## Starten
 

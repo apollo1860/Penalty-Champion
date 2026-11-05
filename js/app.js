@@ -1,4 +1,4 @@
-import { TEAMS, ROUND_NAMES, ROUND_SHORT, team, tierOf, strength01, badgeSVG } from './teams.js';
+import { TEAMS, ROUND_NAMES, ROUND_SHORT, team, tierOf, strength01, badgeSVG, potOf, POT_LABEL } from './teams.js';
 import { Scene, classify, heightFromMeter } from './scene.js';
 import { Sound, buzz } from './audio.js';
 import {
@@ -143,7 +143,7 @@ function openPick(t) {
     <div class="pick">
       ${badgeSVG(t, 92)}
       <h3 id="sheet-title">${t.name}</h3>
-      <div class="meta">${tierOf(t.r).label} · Stärke ${t.r}</div>
+      <div class="meta">${POT_LABEL[potOf(t.id)]} · ${tierOf(t.r).label} · Stärke ${t.r}</div>
       <div class="opponent">
         ${badgeSVG(opp, 44)}
         <div><small>1. Runde · ${where}</small><b>${opp.name}</b></div>
@@ -195,7 +195,7 @@ function renderRound() {
   const p = myPairing(tour);
   const h = team(p.home);
   const a = team(p.away);
-  const tag = (t) => (t.id === tour.teamId ? '<span class="fx-tag">DU</span>' : `<span class="fx-tag ghost">${tierOf(t.r).label}</span>`);
+  const tag = (t) => (t.id === tour.teamId ? '<span class="fx-tag">DU</span>' : `<span class="fx-tag ghost">${POT_LABEL[potOf(t.id)]}</span>`);
   const mid = played
     ? `<div class="fx-vs">${lastMine.hg}:${lastMine.ag}<small>i. E.</small></div>`
     : `<div class="fx-vs">VS<small>${r === 5 ? 'Berlin' : (p.home === tour.teamId ? 'Heimspiel' : 'Auswärts')}</small></div>`;

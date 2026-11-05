@@ -119,6 +119,12 @@ export const ROUND_SHORT = ['1R', '2R', 'AF', 'VF', 'HF', 'F'];
 const byId = new Map(TEAMS.map((t) => [t.id, t]));
 export const team = (id) => byId.get(id);
 
+// Lostöpfe: Im Amateurtopf stehen die Amateure, die Drittligisten und die Teams
+// ab Platz 15 der letzten Zweitliga-Saison. In der 1. Runde ist das immer die Heimmannschaft.
+const AMATEUR_POT = new Set(ROUND1.map(([home]) => home));
+export const potOf = (id) => (AMATEUR_POT.has(id) ? 'amateur' : 'pro');
+export const POT_LABEL = { amateur: 'Amateurtopf', pro: 'Profitopf' };
+
 export function tierOf(r) {
   if (r >= 78) return { key: 'top', label: 'Topteam' };
   if (r >= 66) return { key: 'pro', label: 'Profi' };

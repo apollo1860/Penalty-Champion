@@ -1,5 +1,5 @@
 // Turnierlogik: Auslosung, Simulation der anderen Partien, Spielstand speichern.
-import { TEAMS, ROUND1, team } from './teams.js';
+import { TEAMS, ROUND1, team, potOf } from './teams.js';
 
 const KEY = 'pc-pokal-2627-v1';
 
@@ -94,13 +94,24 @@ export function completeRound(t, myResult) {
   save(t);
 }
 
+// Auslosung mit zwei Töpfen: Teams aus dem Amateurtopf bekommen so lange wie möglich
+// einen Gegner aus dem Profitopf und haben dann Heimrecht. Erst wenn ein Topf leer ist,
+// werden die übrigen Teams untereinander gelost.
+export function drawRound(teamIds) {
+  const am = shuffle(teamIds.filter((id) => potOf(id) === 'amateur'));
+  const pro = shuffle(teamIds.filter((id) => potOf(id) === 'pro'));
+  const pairs = [];
+  while (am.length && pro.length) pairs.push({ home: am.pop(), away: pro.pop() });
+  const rest = shuffle(am.concat(pro));
+  for (let i = 0; i + 1 < rest.length; i += 2) pairs.push({ home: rest[i], away: rest[i + 1] });
+  return shuffle(pairs);
+}
+
 // Auslosung der nächsten Runde aus den Siegern
 export function advance(t) {
   const winners = t.results.map((r) => r.winner);
   t.round += 1;
-  const drawn = shuffle(winners);
-  t.pairings = [];
-  for (let i = 0; i < drawn.length; i += 2) t.pairings.push({ home: drawn[i], away: drawn[i + 1] });
+  t.pairings = drawRound(winners);
   t.results = null;
   save(t);
 }
